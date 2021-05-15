@@ -8,7 +8,43 @@
     "url" : "http://localhost:10010/api/v1"
   } ],
   "paths" : {
-
+    "/ticket" : {
+      "get" : {
+        "description" : "Returns info about ticket",
+        "operationId" : "tickets",
+        "parameters" : [ {
+          "name" : "date",
+          "in" : "query",
+          "description" : "some info about ticket",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/TicketsResponse"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-swagger-router-controller" : "ticket-controller"
+    },
     "/paint" : {
       "get" : {
         "description" : "Returns list of paints",
@@ -28,7 +64,7 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/PaintsResponse"
-                  }
+                }
               }
             }
           },
@@ -46,16 +82,65 @@
       },
       "x-swagger-router-controller" : "paint-controller"
     },
+    "/location" : {
+      "get" : {
+        "description" : "Returns list of museum locations",
+        "operationId" : "locations",
+        "parameters" : [ {
+          "name" : "date",
+          "in" : "query",
+          "description" : "Filtering date",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/LocationsResponse"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-swagger-router-controller" : "location-controller"
+    },
     "/swagger" : {
       "x-swagger-pipe" : "swagger_raw"
     }
   },
   "components" : {
     "schemas" : {
+      "TicketsResponse" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Ticket"
+        }
+      },
       "PaintsResponse" : {
         "type" : "array",
         "items" : {
           "$ref" : "#/components/schemas/Paint"
+        }
+      },
+      "LocationsResponse" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Location"
         }
       },
       "Paint" : {
@@ -90,68 +175,6 @@
           }
         }
       },
-      "ErrorResponse" : {
-        "required" : [ "message" ],
-        "type" : "object",
-        "properties" : {
-          "message" : {
-            "type" : "string"
-          }
-        }
-      }
-    }
-  }
-}
-
-    "/location" : {
-      "get" : {
-        "description" : "Returns list of museum locations",
-        "operationId" : "locations",
-        "parameters" : [ {
-          "name" : "date",
-          "in" : "query",
-          "description" : "Filtering date",
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Success",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/LocationsResponse"
-                 }
-              }
-            }
-          },
-          "default" : {
-            "description" : "Error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      },
-      "x-swagger-router-controller" : "location-controller"
-    },
-    "/swagger" : {
-      "x-swagger-pipe" : "swagger_raw"
-    }
-  },
-  "components" : {
-    "schemas" : {
-      "LocationsResponse" : {
-        "type" : "array",
-        "items" : {
-          "$ref" : "#/components/schemas/Location"
-        }
-      },
       "Location" : {
         "required" : [ "country1" ],
         "type" : "object",
@@ -168,9 +191,6 @@
           "address1" : {
             "type" : "string"
           },
-          "image1" : {
-            "type" : "string"
-          },
           "country2" : {
             "type" : "string"
           },
@@ -181,9 +201,6 @@
             "type" : "string"
           },
           "address2" : {
-            "type" : "string"
-          },
-          "image2" : {
             "type" : "string"
           },
           "country3" : {
@@ -197,8 +214,46 @@
           },
           "address3" : {
             "type" : "string"
+          }
+        }
+      },
+      "Ticket" : {
+        "type" : "object",
+        "properties" : {
+          "price1" : {
+            "type" : "string"
           },
-          "image3" : {
+          "price2" : {
+            "type" : "string"
+          },
+          "price3" : {
+            "type" : "string"
+          },
+          "museumName1" : {
+            "type" : "string"
+          },
+          "museumName2" : {
+            "type" : "string"
+          },
+          "museumName3" : {
+            "type" : "string"
+          },
+          "amount1" : {
+            "type" : "string"
+          },
+          "amount2" : {
+            "type" : "string"
+          },
+          "amount3" : {
+            "type" : "string"
+          },
+          "date1" : {
+            "type" : "string"
+          },
+          "date2" : {
+            "type" : "string"
+          },
+          "date3" : {
             "type" : "string"
           }
         }

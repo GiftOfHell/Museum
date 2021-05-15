@@ -2,37 +2,65 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.art1 {
+  background-image: url(img/art1.jpg);
+  background-size: cover;
+  width: 353px;
+  height: 500px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.art2 {
+  background-image: url(img/art2.jpg);
+  background-size: cover;
+  width: 353px;
+  height: 500px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.art3 {
+  background-image: url(img/art3.jpg);
+  background-size: cover;
+  width: 353px;
+  height: 500px;
 }
 
-.App-link {
-  color: #61dafb;
+.place1 {
+  background-image: url(img/place1.jpg);
+  background-size: cover;
+  width: 353px;
+  height: 500px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.place2 {
+  background-image: url(img/place2.jpg);
+  background-size: cover;
+  width: 353px;
+  height: 500px;
+}
+
+.place3 {
+  background-image: url(img/place3.jpg);
+  background-size: cover;
+  width: 353px;
+  height: 500px;
+}
+
+.ticket1 {
+  background-image: url(img/ticket1.jpg);
+  background-size: cover;
+  width: 353px;
+  height: 500px;
+}
+
+.ticket2 {
+  background-image: url(img/ticket2.jpg);
+  background-size: cover;
+  width: 353px;
+  height: 500px;
+}
+
+.ticket3 {
+  background-image: url(img/ticket3.jpg);
+  background-size: cover;
+  width: 353px;
+  height: 500px;
 }

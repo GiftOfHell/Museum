@@ -18,26 +18,68 @@ class PaintTable extends React.Component {
 
   render() {
     return (
-      <div>
-        <button className="btn" onClick={this.handleReload}>
-          Reload
-        </button>
-        <div>
-          {this.state.paints.map((paint) => (
-            <div>
-              {paint.name1}, {paint.year1}, {paint.art1}
+      <div class="container">
+        <div class="section-intro text-center pb-65px">
+          <h2 class="section-intro__title">Paints</h2>
+        </div>
+        <div class="text-center">
+          <div class="row">
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 mb-xl-0">
+              <div class="card card-team">
+                <div class="art1"></div>
+                <div class="card-team__body text-center">
+                  {this.state.paints.map((paint) => (
+                    <h3>{paint.name1}</h3>
+                  ))}
+                  {this.state.paints.map((paint) => (
+                    <p>{paint.year1}</p>
+                  ))}
+                  {this.state.paints.map((paint) => (
+                    <p>{paint.art1}</p>
+                  ))}
+                </div>
+              </div>
             </div>
-          ))}
-          {this.state.paints.map((paint) => (
-            <div>
-              {paint.name2}, {paint.year2}, {paint.art2}
+
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 mb-xl-0">
+              <div class="card card-team">
+                <div class="art2"></div>
+                <div class="card-team__body text-center">
+                  {this.state.paints.map((paint) => (
+                    <h3>{paint.name2}</h3>
+                  ))}
+                  {this.state.paints.map((paint) => (
+                    <p>{paint.year2}</p>
+                  ))}
+                  {this.state.paints.map((paint) => (
+                    <p>{paint.art2}</p>
+                  ))}
+                </div>
+              </div>
             </div>
-          ))}
-          {this.state.paints.map((paint) => (
-            <div>
-              {paint.name3}, {paint.year3}, {paint.art3}
+
+            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 mb-xl-0">
+              <div class="card card-team">
+                <div class="art3"></div>
+                <div class="card-team__body text-center">
+                  {this.state.paints.map((paint) => (
+                    <h3>{paint.name3}</h3>
+                  ))}
+                  {this.state.paints.map((paint) => (
+                    <p>{paint.year3}</p>
+                  ))}
+                  {this.state.paints.map((paint) => (
+                    <p>{paint.art3}</p>
+                  ))}
+                </div>
+              </div>
             </div>
-          ))}
+          </div>
+        </div>
+        <div class="text-center">
+          <button class="button" onClick={this.handleReload}>
+            Reload Paints
+          </button>
         </div>
       </div>
     );
