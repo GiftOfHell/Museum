@@ -1,0 +1,112 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Museum service",
+    "version" : "0.1.0"
+  },
+  "servers" : [ {
+    "url" : "http://localhost:10010/api/v1"
+  } ],
+  "paths" : {
+    "/ticket" : {
+      "get" : {
+        "description" : "Returns info about ticket",
+        "operationId" : "tickets",
+        "parameters" : [ {
+          "name" : "date",
+          "in" : "query",
+          "description" : "some info about ticket",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/TicketsResponse"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-swagger-router-controller" : "ticket-controller"
+    },
+    "/swagger" : {
+      "x-swagger-pipe" : "swagger_raw"
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "TicketsResponse" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Ticket"
+        }
+      },
+      "Ticket" : {
+        "type" : "object",
+        "properties" : {
+          "price1" : {
+            "type" : "string"
+          },
+          "price2" : {
+            "type" : "string"
+          },
+          "price3" : {
+            "type" : "string"
+          },
+          "museumName1" : {
+            "type" : "string"
+          },
+          "museumName2" : {
+            "type" : "string"
+          },
+          "museumName3" : {
+            "type" : "string"
+          },
+          "amount1" : {
+            "type" : "string"
+          },
+          "amount2" : {
+            "type" : "string"
+          },
+          "amount3" : {
+            "type" : "string"
+          },
+          "date1" : {
+            "type" : "string"
+          },
+          "date2" : {
+            "type" : "string"
+          },
+          "date3" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ErrorResponse" : {
+        "required" : [ "message" ],
+        "type" : "object",
+        "properties" : {
+          "message" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}
