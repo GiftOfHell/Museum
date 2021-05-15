@@ -32,27 +32,20 @@ module.exports = {
   Param 2: a handle to the response object
  */
 function getPaints(req, res) {
-  var arts = [
-    "<div class='art1'></div>",
-    "<div class='art2'></div>",
-    "<div class='art3'></div>",
-  ];
-  var arts1 = arts[Math.floor(Math.random() * arts.length)];
-
   // this sends back a JSON response which is a single string
   res.json([
     {
       name1: "" + faker.name.title(),
       year1: "" + faker.datatype.number({ min: 1500, max: 2020 }),
-      art1: "" + arts1,
+      art1: "" + faker.lorem.sentence(),
 
       name2: "" + faker.name.title(),
       year2: "" + faker.datatype.number({ min: 1500, max: 2020 }),
-      art2: "" + arts1,
+      art2: "" + faker.lorem.sentence(),
 
       name3: "" + faker.name.title(),
       year3: "" + faker.datatype.number({ min: 1500, max: 2020 }),
-      art3: "" + arts1,
+      art3: "" + faker.lorem.sentence(),
     },
   ]);
 }

@@ -25,28 +25,19 @@ class PaintTable extends React.Component {
         <div>
           {this.state.paints.map((paint) => (
             <div>
-              {paint.name1}, {paint.year1}
+              {paint.name1}, {paint.year1}, {paint.art1}
             </div>
           ))}
-          {this.state.paints.map((paint) => {
-            paint.art1;
-          })}
           {this.state.paints.map((paint) => (
             <div>
-              {paint.name2}, {paint.year2}
+              {paint.name2}, {paint.year2}, {paint.art2}
             </div>
           ))}
-          {this.state.paints.map((paint) => {
-            paint.art2;
-          })}
           {this.state.paints.map((paint) => (
             <div>
-              {paint.name3}, {paint.year3}
+              {paint.name3}, {paint.year3}, {paint.art3}
             </div>
           ))}
-          {this.state.paints.map((paint) => {
-            paint.art3;
-          })}
         </div>
       </div>
     );

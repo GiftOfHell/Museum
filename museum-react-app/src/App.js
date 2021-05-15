@@ -41,7 +41,7 @@ function App() {
 
               <Route path="/paint">
                 <h1>Paints</h1>
-                <LocationTable />
+                <PaintTable />
               </Route>
 
               <Route path="/">
