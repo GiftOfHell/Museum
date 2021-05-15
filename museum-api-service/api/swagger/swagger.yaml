@@ -4,9 +4,9 @@ info:
   title: Museum service
 # during dev, should point to your local machine
 host: localhost:10010
-# basePath prefixes all resource paths 
+# basePath prefixes all resource paths
 basePath: /api/v1
-# 
+#
 schemes:
   # tip: remove http to make production-grade
   - http
@@ -17,7 +17,6 @@ consumes:
 produces:
   - application/json
 paths:
-
   /ticket:
     # binds a127 app logic to a route
     x-swagger-router-controller: ticket-controller
@@ -43,7 +42,6 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
-
   /paint:
     # binds a127 app logic to a route
     x-swagger-router-controller: paint-controller
@@ -52,16 +50,6 @@ paths:
       # used as the method name of the controller
       operationId: paints
       parameters:
-        - name: date
-          in: query
-          description: Filtering date
-          required: false
-          type: string
-      responses:
-        "200":
-          description: Success
-          schema:
-            # a pointer to a definitionparameters:
         - name: date
           in: query
           description: Filtering date
@@ -108,22 +96,21 @@ paths:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
-  
   TicketsResponse:
     type: array
     items:
       $ref: "#/definitions/Ticket"
 
   PaintsResponse:
-      type: array
-      items:
-        $ref: "#/definitions/Paint"
-        
+    type: array
+    items:
+      $ref: "#/definitions/Paint"
+
   LocationsResponse:
-      type: array
-      items:
-        $ref: "#/definitions/Location"
-  
+    type: array
+    items:
+      $ref: "#/definitions/Location"
+
   Paint:
     properties:
       name1:
@@ -145,7 +132,6 @@ definitions:
       art3:
         type: string
 
-  
   Location:
     required:
       - country1
@@ -158,8 +144,6 @@ definitions:
         type: string
       address1:
         type: string
-      image1:
-        type: string
       country2:
         type: string
       city2:
@@ -167,8 +151,6 @@ definitions:
       street2:
         type: string
       address2:
-        type: string
-      image2:
         type: string
       country3:
         type: string
@@ -178,9 +160,7 @@ definitions:
         type: string
       address3:
         type: string
-      image3:
-        type: string
-        
+
   Ticket:
     properties:
       price1:
@@ -207,8 +187,7 @@ definitions:
         type: string
       date3:
         type: string
-         
-      
+
   ErrorResponse:
     required:
       - message

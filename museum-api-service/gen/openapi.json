@@ -8,7 +8,6 @@
     "url" : "http://localhost:10010/api/v1"
   } ],
   "paths" : {
-
     "/ticket" : {
       "get" : {
         "description" : "Returns info about ticket",
@@ -27,7 +26,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                   "$ref" : "#/components/schemas/TicketsResponse"
+                  "$ref" : "#/components/schemas/TicketsResponse"
                 }
               }
             }
@@ -46,6 +45,80 @@
       },
       "x-swagger-router-controller" : "ticket-controller"
     },
+    "/paint" : {
+      "get" : {
+        "description" : "Returns list of paints",
+        "operationId" : "paints",
+        "parameters" : [ {
+          "name" : "date",
+          "in" : "query",
+          "description" : "Filtering date",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PaintsResponse"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-swagger-router-controller" : "paint-controller"
+    },
+    "/location" : {
+      "get" : {
+        "description" : "Returns list of museum locations",
+        "operationId" : "locations",
+        "parameters" : [ {
+          "name" : "date",
+          "in" : "query",
+          "description" : "Filtering date",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/LocationsResponse"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-swagger-router-controller" : "location-controller"
+    },
     "/swagger" : {
       "x-swagger-pipe" : "swagger_raw"
     }
@@ -56,6 +129,92 @@
         "type" : "array",
         "items" : {
           "$ref" : "#/components/schemas/Ticket"
+        }
+      },
+      "PaintsResponse" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Paint"
+        }
+      },
+      "LocationsResponse" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Location"
+        }
+      },
+      "Paint" : {
+        "type" : "object",
+        "properties" : {
+          "name1" : {
+            "type" : "string"
+          },
+          "year1" : {
+            "type" : "string"
+          },
+          "art1" : {
+            "type" : "string"
+          },
+          "name2" : {
+            "type" : "string"
+          },
+          "year2" : {
+            "type" : "string"
+          },
+          "art2" : {
+            "type" : "string"
+          },
+          "name3" : {
+            "type" : "string"
+          },
+          "year3" : {
+            "type" : "string"
+          },
+          "art3" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Location" : {
+        "required" : [ "country1" ],
+        "type" : "object",
+        "properties" : {
+          "country1" : {
+            "type" : "string"
+          },
+          "city1" : {
+            "type" : "string"
+          },
+          "street1" : {
+            "type" : "string"
+          },
+          "address1" : {
+            "type" : "string"
+          },
+          "country2" : {
+            "type" : "string"
+          },
+          "city2" : {
+            "type" : "string"
+          },
+          "street2" : {
+            "type" : "string"
+          },
+          "address2" : {
+            "type" : "string"
+          },
+          "country3" : {
+            "type" : "string"
+          },
+          "city3" : {
+            "type" : "string"
+          },
+          "street3" : {
+            "type" : "string"
+          },
+          "address3" : {
+            "type" : "string"
+          }
         }
       },
       "Ticket" : {
@@ -111,214 +270,3 @@
     }
   }
 }
-
-
-    "/paint" : {
-      "get" : {
-        "description" : "Returns list of paints",
-        "operationId" : "paints",
-        "parameters" : [ {
-          "name" : "date",
-          "in" : "query",
-          "description" : "Filtering date",
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Success",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  
-                  "$ref" : "#/components/schemas/PaintsResponse"
-                  }
-              }
-            }
-          },
-          "default" : {
-            "description" : "Error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      },
-      "x-swagger-router-controller" : "paint-controller"
-    },
-    "/swagger" : {
-      "x-swagger-pipe" : "swagger_raw"
-    }
-  },
-  "components" : {
-    "schemas" : {
-      "PaintsResponse" : {
-        "type" : "array",
-        "items" : {
-          "$ref" : "#/components/schemas/Paint"
-        }
-      },
-      "Paint" : {
-        "type" : "object",
-        "properties" : {
-          "name1" : {
-            "type" : "string"
-          },
-          "year1" : {
-            "type" : "string"
-          },
-          "art1" : {
-            "type" : "string"
-          },
-          "name2" : {
-            "type" : "string"
-          },
-          "year2" : {
-            "type" : "string"
-          },
-          "art2" : {
-            "type" : "string"
-          },
-          "name3" : {
-            "type" : "string"
-          },
-          "year3" : {
-            "type" : "string"
-          },
-          "art3" : {
-            "type" : "string"
-          }
-        }
-      },
-      "ErrorResponse" : {
-        "required" : [ "message" ],
-        "type" : "object",
-        "properties" : {
-          "message" : {
-            "type" : "string"
-          }
-        }
-      }
-    }
-  }
-}
-
-    "/location" : {
-      "get" : {
-        "description" : "Returns list of museum locations",
-        "operationId" : "locations",
-        "parameters" : [ {
-          "name" : "date",
-          "in" : "query",
-          "description" : "Filtering date",
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Success",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/LocationsResponse"
-                 }
-              }
-            }
-          },
-          "default" : {
-            "description" : "Error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      },
-      "x-swagger-router-controller" : "location-controller"
-    },
-    "/swagger" : {
-      "x-swagger-pipe" : "swagger_raw"
-    }
-  },
-  "components" : {
-    "schemas" : {
-      "LocationsResponse" : {
-        "type" : "array",
-        "items" : {
-          "$ref" : "#/components/schemas/Location"
-        }
-      },
-      "Location" : {
-        "required" : [ "country1" ],
-        "type" : "object",
-        "properties" : {
-          "country1" : {
-            "type" : "string"
-          },
-          "city1" : {
-            "type" : "string"
-          },
-          "street1" : {
-            "type" : "string"
-          },
-          "address1" : {
-            "type" : "string"
-          },
-          "image1" : {
-            "type" : "string"
-          },
-          "country2" : {
-            "type" : "string"
-          },
-          "city2" : {
-            "type" : "string"
-          },
-          "street2" : {
-            "type" : "string"
-          },
-          "address2" : {
-            "type" : "string"
-          },
-          "image2" : {
-            "type" : "string"
-          },
-          "country3" : {
-            "type" : "string"
-          },
-          "city3" : {
-            "type" : "string"
-          },
-          "street3" : {
-            "type" : "string"
-          },
-          "address3" : {
-            "type" : "string"
-          },
-          "image3" : {
-            "type" : "string"
-          }
-        }
-      },
-      "ErrorResponse" : {
-        "required" : [ "message" ],
-        "type" : "object",
-        "properties" : {
-          "message" : {
-            "type" : "string"
-          }
-        }
-      }
-    }
-  }
-}
-
-

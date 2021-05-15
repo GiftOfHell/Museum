@@ -1,4 +1,4 @@
 export * from './ErrorResponse';
-export * from './Ticket';
-export * from './Paint';
 export * from './Location';
+export * from './Paint';
+export * from './Ticket';
