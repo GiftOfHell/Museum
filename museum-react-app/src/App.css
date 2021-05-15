@@ -1,3 +1,66 @@
 .App {
   text-align: center;
 }
+
+.art1 {
+  background-image: url(img/art1.jpg);
+  background-size: cover;
+  width: 353px;
+  height: 500px;
+}
+
+.art2 {
+  background-image: url(img/art2.jpg);
+  background-size: cover;
+  width: 353px;
+  height: 500px;
+}
+
+.art3 {
+  background-image: url(img/art3.jpg);
+  background-size: cover;
+  width: 353px;
+  height: 500px;
+}
+
+.place1 {
+  background-image: url(img/place1.jpg);
+  background-size: cover;
+  width: 353px;
+  height: 500px;
+}
+
+.place2 {
+  background-image: url(img/place2.jpg);
+  background-size: cover;
+  width: 353px;
+  height: 500px;
+}
+
+.place3 {
+  background-image: url(img/place3.jpg);
+  background-size: cover;
+  width: 353px;
+  height: 500px;
+}
+
+.ticket1 {
+  background-image: url(img/ticket1.jpg);
+  background-size: cover;
+  width: 353px;
+  height: 500px;
+}
+
+.ticket2 {
+  background-image: url(img/ticket2.jpg);
+  background-size: cover;
+  width: 353px;
+  height: 500px;
+}
+
+.ticket3 {
+  background-image: url(img/ticket3.jpg);
+  background-size: cover;
+  width: 353px;
+  height: 500px;
+}
