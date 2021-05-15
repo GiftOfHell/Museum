@@ -17,6 +17,7 @@ consumes:
 produces:
   - application/json
 paths:
+
   /paint:
     # binds a127 app logic to a route
     x-swagger-router-controller: paint-controller
@@ -34,8 +35,43 @@ paths:
         "200":
           description: Success
           schema:
+            # a pointer to a definitionparameters:
+        - name: date
+          in: query
+          description: Filtering date
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
             # a pointer to a definition
             $ref: "#/definitions/PaintsResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /location:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: location-controller
+    get:
+      description: Returns list of museum locations
+      # used as the method name of the controller
+      operationId: locations
+      parameters:
+        - name: date
+          in: query
+          description: Filtering date
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/LocationsResponse"
         # responses may fall through to errors
         default:
           description: Error
@@ -47,10 +83,16 @@ paths:
 # complex objects have schema definitions
 definitions:
 
+
   PaintsResponse:
       type: array
       items:
         $ref: "#/definitions/Paint"
+        
+  LocationsResponse:
+      type: array
+      items:
+        $ref: "#/definitions/Location"
   
   Paint:
     properties:
@@ -72,8 +114,43 @@ definitions:
         type: string
       art3:
         type: string
-      
-      
+
+  
+  Location:
+    required:
+      - country1
+    properties:
+      country1:
+        type: string
+      city1:
+        type: string
+      street1:
+        type: string
+      address1:
+        type: string
+      image1:
+        type: string
+      country2:
+        type: string
+      city2:
+        type: string
+      street2:
+        type: string
+      address2:
+        type: string
+      image2:
+        type: string
+      country3:
+        type: string
+      city3:
+        type: string
+      street3:
+        type: string
+      address3:
+        type: string
+      image3:
+        type: string
+         
       
   ErrorResponse:
     required:

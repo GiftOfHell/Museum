@@ -1,6 +1,9 @@
 import "./App.css";
 import React from "react";
+
 import PaintTable from "./components/PaintTable.js";
+import LocationTable from "./components/LocationTable.js";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -29,6 +32,11 @@ function App() {
             <li>
               <Link to="/paint">Paints</Link>
             </li>
+    
+            <li>
+              <Link to="/location">Location</Link>
+            </li>
+    
           </ul>
         </nav>
 
@@ -42,6 +50,12 @@ function App() {
               <Route path="/paint">
                 <h1>Paints</h1>
                 <PaintTable />
+              </Route>
+    
+              <Route path="/location">
+                <h1>Museums locations</h1>
+                Click at the button to reload the page and see other museums!
+                <LocationTable />
               </Route>
 
               <Route path="/">
