@@ -18,6 +18,32 @@ produces:
   - application/json
 paths:
 
+  /ticket:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: ticket-controller
+    get:
+      description: Returns info about ticket
+      # used as the method name of the controller
+      operationId: tickets
+      parameters:
+        - name: date
+          in: query
+          description: some info about ticket
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/TicketsResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+
   /paint:
     # binds a127 app logic to a route
     x-swagger-router-controller: paint-controller
@@ -77,12 +103,16 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-    
+
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
-
+  
+  TicketsResponse:
+    type: array
+    items:
+      $ref: "#/definitions/Ticket"
 
   PaintsResponse:
       type: array
@@ -149,6 +179,33 @@ definitions:
       address3:
         type: string
       image3:
+        type: string
+        
+  Ticket:
+    properties:
+      price1:
+        type: string
+      price2:
+        type: string
+      price3:
+        type: string
+      museumName1:
+        type: string
+      museumName2:
+        type: string
+      museumName3:
+        type: string
+      amount1:
+        type: string
+      amount2:
+        type: string
+      amount3:
+        type: string
+      date1:
+        type: string
+      date2:
+        type: string
+      date3:
         type: string
          
       

@@ -1,6 +1,7 @@
 import "./App.css";
 import React from "react";
 
+import TicketTable from "./components/TicketTable.js";
 import PaintTable from "./components/PaintTable.js";
 import LocationTable from "./components/LocationTable.js";
 
@@ -36,6 +37,10 @@ function App() {
             <li>
               <Link to="/location">Location</Link>
             </li>
+  
+            <li>
+              <Link to="/ticket">Weather today</Link>
+            </li>
     
           </ul>
         </nav>
@@ -57,6 +62,13 @@ function App() {
                 Click at the button to reload the page and see other museums!
                 <LocationTable />
               </Route>
+  
+              <Route path="/ticket">
+                <h1>Weather Today</h1>
+                Click at the button to reload the page and see weather today!
+                <TicketTable />
+              </Route>
+  
 
               <Route path="/">
                 <h1>Home</h1>
