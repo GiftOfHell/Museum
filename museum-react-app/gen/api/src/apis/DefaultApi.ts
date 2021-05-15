@@ -21,31 +21,35 @@ import {
     Ticket,
     TicketFromJSON,
     TicketToJSON,
+    Paint,
+    PaintFromJSON,
+    PaintToJSON,
+    Location,
+    LocationFromJSON,
+    LocationToJSON,
 } from '../models';
 
 export interface TicketsRequest {
     date?: string;
-}
-
+}  
 /**
  * 
  */
 export class DefaultApi extends runtime.BaseAPI {
 
     /**
-     * Returns info about ticket
+    * Returns info about ticket
      */
     async ticketsRaw(requestParameters: TicketsRequest): Promise<runtime.ApiResponse<Array<Ticket>>> {
         const queryParameters: any = {};
-
-        if (requestParameters.date !== undefined) {
+      if (requestParameters.date !== undefined) {
             queryParameters['date'] = requestParameters.date;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/ticket`,
+          path: `/ticket`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -60,6 +64,79 @@ export class DefaultApi extends runtime.BaseAPI {
     async tickets(requestParameters: TicketsRequest): Promise<Array<Ticket>> {
         const response = await this.ticketsRaw(requestParameters);
         return await response.value();
+      }
+
+}
+
+
+export interface PaintsRequest {
+  date?: string;
+  }
+
+/**
+ * 
+ */
+export class DefaultApi extends runtime.BaseAPI {
+
+    /**
+* Returns list of paints
+     */
+    async paintsRaw(requestParameters: PaintsRequest): Promise<runtime.ApiResponse<Array<Paint>>> {
+      const queryParameters: any = {};
+      if (requestParameters.date !== undefined) {
+            queryParameters['date'] = requestParameters.date;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+          path: `/paint`,
+          method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        });
+      return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(PaintFromJSON));
     }
+
+    /**
+     * Returns list of paints
+     */
+    async paints(requestParameters: PaintsRequest): Promise<Array<Paint>> {
+        const response = await this.paintsRaw(requestParameters);
+      return await response.value();
+    }
+
+}
+
+export class DefaultApi extends runtime.BaseAPI {
+
+    /**
+* Returns list of museum locations
+     */
+    async locationsRaw(requestParameters: LocationsRequest): Promise<runtime.ApiResponse<Array<Location>>> {
+      const queryParameters: any = {};
+
+        if (requestParameters.date !== undefined) {
+            queryParameters['date'] = requestParameters.date;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+          path: `/location`,
+          method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        });
+      return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(LocationFromJSON));
+    }
+
+    /**
+     * Returns list of museum locations
+     */
+    async locations(requestParameters: LocationsRequest): Promise<Array<Location>> {
+        const response = await this.locationsRaw(requestParameters);
+      return await response.value();
+      }
 
 }
