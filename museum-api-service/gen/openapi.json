@@ -1,13 +1,108 @@
 {
   "openapi" : "3.0.1",
   "info" : {
-    "title" : "Location service",
+    "title" : "Museum service",
     "version" : "0.1.0"
   },
   "servers" : [ {
     "url" : "http://localhost:10010/api/v1"
   } ],
   "paths" : {
+
+    "/paint" : {
+      "get" : {
+        "description" : "Returns list of paints",
+        "operationId" : "paints",
+        "parameters" : [ {
+          "name" : "date",
+          "in" : "query",
+          "description" : "Filtering date",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PaintsResponse"
+                  }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-swagger-router-controller" : "paint-controller"
+    },
+    "/swagger" : {
+      "x-swagger-pipe" : "swagger_raw"
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "PaintsResponse" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Paint"
+        }
+      },
+      "Paint" : {
+        "type" : "object",
+        "properties" : {
+          "name1" : {
+            "type" : "string"
+          },
+          "year1" : {
+            "type" : "string"
+          },
+          "art1" : {
+            "type" : "string"
+          },
+          "name2" : {
+            "type" : "string"
+          },
+          "year2" : {
+            "type" : "string"
+          },
+          "art2" : {
+            "type" : "string"
+          },
+          "name3" : {
+            "type" : "string"
+          },
+          "year3" : {
+            "type" : "string"
+          },
+          "art3" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ErrorResponse" : {
+        "required" : [ "message" ],
+        "type" : "object",
+        "properties" : {
+          "message" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}
+
     "/location" : {
       "get" : {
         "description" : "Returns list of museum locations",
@@ -27,7 +122,7 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/LocationsResponse"
-                }
+                 }
               }
             }
           },

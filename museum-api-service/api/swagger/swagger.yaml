@@ -17,6 +17,42 @@ consumes:
 produces:
   - application/json
 paths:
+
+  /paint:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: paint-controller
+    get:
+      description: Returns list of paints
+      # used as the method name of the controller
+      operationId: paints
+      parameters:
+        - name: date
+          in: query
+          description: Filtering date
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definitionparameters:
+        - name: date
+          in: query
+          description: Filtering date
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/PaintsResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /location:
     # binds a127 app logic to a route
     x-swagger-router-controller: location-controller
@@ -47,10 +83,38 @@ paths:
 # complex objects have schema definitions
 definitions:
 
+
+  PaintsResponse:
+      type: array
+      items:
+        $ref: "#/definitions/Paint"
+        
   LocationsResponse:
       type: array
       items:
         $ref: "#/definitions/Location"
+  
+  Paint:
+    properties:
+      name1:
+        type: string
+      year1:
+        type: string
+      art1:
+        type: string
+      name2:
+        type: string
+      year2:
+        type: string
+      art2:
+        type: string
+      name3:
+        type: string
+      year3:
+        type: string
+      art3:
+        type: string
+
   
   Location:
     required:
@@ -86,12 +150,7 @@ definitions:
         type: string
       image3:
         type: string
-     
-      
-      
-      
-      
-      
+         
       
   ErrorResponse:
     required:

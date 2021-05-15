@@ -1,6 +1,9 @@
 import "./App.css";
 import React from "react";
+
+import PaintTable from "./components/PaintTable.js";
 import LocationTable from "./components/LocationTable.js";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,56 +18,60 @@ import moment from "moment";
 function App() {
   return (
     <Router>
-    <div>
-      <nav>
-        <ul>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
 
-          <li>
-            <Link to="/">Home</Link>
-          </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
 
-          <li>
-            <Link to="/about">About</Link>
-          </li>
+            <li>
+              <Link to="/paint">Paints</Link>
+            </li>
+    
+            <li>
+              <Link to="/location">Location</Link>
+            </li>
+    
+          </ul>
+        </nav>
 
-          <li>
-            <Link to="/location">Location</Link>
-          </li>
+        <div className="App">
+          <section>
+            <Switch>
+              <Route path="/about">
+                <About />
+              </Route>
 
-        
+              <Route path="/paint">
+                <h1>Paints</h1>
+                <PaintTable />
+              </Route>
+    
+              <Route path="/location">
+                <h1>Museums locations</h1>
+                Click at the button to reload the page and see other museums!
+                <LocationTable />
+              </Route>
 
-        </ul>
-      </nav>
+              <Route path="/">
+                <h1>Home</h1>
+                Welcome to our service. Please explore our site!
+              </Route>
 
-      <div className="App">
-        <section>
-          <Switch>
-
-            <Route path="/about">
-              <About />
-            </Route>
-
-            <Route path="/location">
-              <h1>Museums locations</h1>
-              Click at the button to reload the page and see other museums!
-              <LocationTable />
-            </Route>
-
-
-            <Route path="/">
-              <h1>Home</h1>
-              Welcome to our service. Please explore our site!
-            </Route>
-
-            <Route path="*">
-              <NoMatch />
-            </Route>
-          </Switch>
-        </section>
+              <Route path="*">
+                <NoMatch />
+              </Route>
+            </Switch>
+          </section>
+        </div>
       </div>
-    </div>
-  </Router>
-);
+    </Router>
+  );
 }
 
 function NoMatch() {
@@ -88,6 +95,5 @@ function About() {
     </div>
   );
 }
-
 
 export default App;
