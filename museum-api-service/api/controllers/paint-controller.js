@@ -32,7 +32,11 @@ module.exports = {
   Param 2: a handle to the response object
  */
 function getPaints(req, res) {
-  var arts = ["1", "2", "3"];
+  var arts = [
+    "<div class='art1'></div>",
+    "<div class='art2'></div>",
+    "<div class='art3'></div>",
+  ];
   var arts1 = arts[Math.floor(Math.random() * arts.length)];
 
   // this sends back a JSON response which is a single string
