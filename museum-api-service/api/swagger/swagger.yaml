@@ -1,0 +1,101 @@
+swagger: "2.0"
+info:
+  version: "0.1.0"
+  title: Museum service
+# during dev, should point to your local machine
+host: localhost:10010
+# basePath prefixes all resource paths 
+basePath: /api/v1
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /location:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: location-controller
+    get:
+      description: Returns list of museum locations
+      # used as the method name of the controller
+      operationId: locations
+      parameters:
+        - name: date
+          in: query
+          description: Filtering date
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/LocationsResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    
+  /swagger:
+    x-swagger-pipe: swagger_raw
+# complex objects have schema definitions
+definitions:
+
+  LocationsResponse:
+      type: array
+      items:
+        $ref: "#/definitions/Location"
+  
+  Location:
+    required:
+      - country1
+    properties:
+      country1:
+        type: string
+      city1:
+        type: string
+      street1:
+        type: string
+      address1:
+        type: string
+      image1:
+        type: string
+      country2:
+        type: string
+      city2:
+        type: string
+      street2:
+        type: string
+      address2:
+        type: string
+      image2:
+        type: string
+      country3:
+        type: string
+      city3:
+        type: string
+      street3:
+        type: string
+      address3:
+        type: string
+      image3:
+        type: string
+     
+      
+      
+      
+      
+      
+      
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
