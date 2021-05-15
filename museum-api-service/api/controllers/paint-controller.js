@@ -31,8 +31,8 @@ module.exports = {
   Param 1: a handle to the request object
   Param 2: a handle to the response object
  */
-function getLocations(req, res) {
-  var arts = [];
+function getPaints(req, res) {
+  var arts = ["1", "2", "3"];
   var arts1 = arts[Math.floor(Math.random() * arts.length)];
 
   // this sends back a JSON response which is a single string
